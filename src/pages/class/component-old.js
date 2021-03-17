@@ -1,4 +1,4 @@
-import React, { Component,PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 // PureComponent   对 shouldComponentUpdate方法的二次封装
 export default class ComponentOld extends PureComponent {
 
