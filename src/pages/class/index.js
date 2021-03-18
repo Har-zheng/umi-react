@@ -30,6 +30,11 @@ export default class Index extends Component {
               Dva
             </Link>
           </List.Item>
+          <List.Item>
+            <Link to='/class/context'>
+            context
+            </Link>
+          </List.Item>
         </List>
       </div>
     )
