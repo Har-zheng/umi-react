@@ -17,7 +17,7 @@ export default class Index extends Component {
         <List>
           <List.Item>
             <Link to='/class/component-old'> component-old</Link>
-           
+
           </List.Item>
           <List.Item>
             <Link to='/class/component-new'>component-new</Link>
@@ -32,7 +32,12 @@ export default class Index extends Component {
           </List.Item>
           <List.Item>
             <Link to='/class/context'>
-            context
+              context
+            </Link>
+          </List.Item>
+          <List.Item>
+            <Link to='/class/lazy-load'>
+              lazy-load
             </Link>
           </List.Item>
         </List>

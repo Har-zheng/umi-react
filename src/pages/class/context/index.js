@@ -4,6 +4,7 @@ import Search from './search'
 import Lists from './list'
 import  { getLists } from '@/services/search'
 import Consumer from './consumer'
+import LazyLoad from '@/components/LazyLoad'
 
 export default class Index extends Component {
 
@@ -41,7 +42,8 @@ export default class Index extends Component {
           dispatch: this.handleDispatch
         } }>
           <Search></Search>
-          <Lists></Lists>
+          {/* <Lists></Lists> */}
+          <LazyLoad component={ import('./list') }></LazyLoad>
           <Consumer></Consumer>
         </SearchContext.Provider>
       </div>
