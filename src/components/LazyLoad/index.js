@@ -9,27 +9,27 @@ export default class Index extends Component {
     };
   }
 
-_renderLazy = () => {
-  let Lazy;
-  const { component, delay, ...other }  = this.props;
-  if(!component || component.constructor.name !== 'Promise'){
-    Lazy = import('./error')
-  }
-  Lazy = lazy(()=> {
-    return new Promise(resolve=> {
-      setTimeout(()=> {
-        resolve(component)
-      },delay || 300)
+  _renderLazy = () => {
+    let Lazy;
+    const { component, delay, ...other } = this.props;
+    if (!component || component.constructor.name !== 'Promise') {
+      Lazy = import('./error')
+    }
+    Lazy = lazy(() => {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(component)
+        }, delay || 300)
+      })
     })
-  })
-  return <Lazy { ...other }/>
-}
+    return <Lazy {...other} />
+  }
 
   render() {
     return (
       <div>
-        <Suspense fallback={  <div>loading...</div> }>
-      { this._renderLazy}
+        <Suspense fallback={<div>loading...</div>}>
+          {this._renderLazy()}
         </Suspense>
       </div>
     )

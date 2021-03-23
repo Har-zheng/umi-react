@@ -35,8 +35,13 @@ export default class Index extends Component {
   }
 
   render() {
+    const houses ={
+      info: {}
+     }
     return (
       <div>
+        {/* js  新的可选链技术   houses?.info2?.id   */}
+        { houses.info2.id}
         <SearchContext.Provider value={{
           state: this.state,
           dispatch: this.handleDispatch
