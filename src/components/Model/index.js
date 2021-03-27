@@ -16,7 +16,7 @@ const Styles = {
     width: '100%',
     top: '0',
     left: '0',
-    display:'flex',
+    display: 'flex',
     aliginItems: 'center',
     justifyContent: 'center',
   },
@@ -35,11 +35,13 @@ export default class Index extends Component {
     };
   }
   handleClose = () => {
-    const { onclose } = this.props
-    onclose && onclose()
+    console.log(this.props)
+    const { onClose } = this.props
+    onClose && onClose()
   }
   render() {
     const { show } = this.props
+    console.log(show)
     return (
       <div>
         {show ? < CreatePortal style={Styles.modal}>

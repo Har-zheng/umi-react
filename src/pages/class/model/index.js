@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CreatePortal from '@/components/CreatePortal/index'
 import Model from '@/components/Model/index'
-import { Button } from  'antd-mobile'
+import { Button } from 'antd-mobile'
 
 export default class Index extends Component {
 
@@ -11,23 +11,25 @@ export default class Index extends Component {
       show: false
     };
   }
-  handleClick =( ) => {
-    this.setState({
-      show: false
-    })
-  }
-  handleClose= ()=> {
+  handleClick = () => {
+    console.log(this.state)
     this.setState({
       show: true
+    })
+  }
+  handleClose = () => {
+    console.log(this.state)
+    this.setState({
+      show: false
     })
   }
   render() {
     return (
       <div>
-        <Button type="primary" onClick={ this.handleClick}>Model</Button>
-        <Model 
-        show= {this.state.show}
-        onClose={this.handleClose}>model</Model>
+        <Button type="primary" onClick={this.handleClick}>Model</Button>
+        <Model
+          show={this.state.show}
+          onClose={this.handleClose}>model</Model>
       </div>
     )
   }
