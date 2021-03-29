@@ -45,6 +45,11 @@ export default class Index extends Component {
               model
             </Link>
           </List.Item>
+          <List.Item>
+            <Link to='/class/refs'>
+              refs
+            </Link>
+          </List.Item>
         </List>
       </div>
     )
