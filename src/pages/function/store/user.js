@@ -13,7 +13,7 @@ export default function (props) {
       id: 10,
       username: 'admin'
     })
-  }, [getUserAsync])
+  })
   const handleClick = () => {
     getUserAsync({
       id: 20 + Math.ceil(Math.random() * 10) * Math.ceil(Math.random() * 10),
