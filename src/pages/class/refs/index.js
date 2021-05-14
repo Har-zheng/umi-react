@@ -7,7 +7,7 @@ export default class Refs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      a: 0
     };
     this.domRef = createRef()
     this.childRef = createRef()
@@ -19,7 +19,15 @@ export default class Refs extends Component {
     console.log(this.childRef.current)
     this.inputRef.current.focus()
   }
+
   handeleChild(str) {
+    // 父组件触发子组件的方法
+    console.log(this.state)
+    var b = this.state.a + 1
+    this.setState({
+      a: b
+    })
+    str = str + b
     this.childRef.current.changeText(str)
   }
   render() {

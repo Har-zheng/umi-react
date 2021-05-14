@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import CreatePortal from '@/components/CreatePortal/index'
 import Model from '@/components/Model/index'
 import { Button } from 'antd-mobile'
