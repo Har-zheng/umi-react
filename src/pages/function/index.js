@@ -27,6 +27,11 @@ export default function (props) {
               context
             </Link>
           </List.Item>
+          <List.Item>
+            <Link to="/function/customize">
+              customize
+            </Link>
+          </List.Item>
         </List>
       </WingBlank>
     </div>
