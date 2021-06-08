@@ -33,7 +33,6 @@ export default function useHttpHook({
     }
 
     return new Promise((resolve, reject) => {
-
       fetch('/api' + url, params)
         .then(res => res.json())
         .then(res => {
@@ -51,13 +50,16 @@ export default function useHttpHook({
           debugger
         })
         .finally(() => {
-
           setLoading(false)
         })
     })
   }
   useEffect(() => {
-    Http()
-  }, [Http])
+    Http();
+  })
+  useEffect(() => {
+    // Http();
+  }, [watch])
+  
   return [result, loading]
 }

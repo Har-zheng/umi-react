@@ -9,13 +9,14 @@ export default function (props) {
 
   }, [])
 
-  const [result, loading] = useHttpHook({
-    url: '/getListsAsync',
-    method: 'GET'
-  })
-  console.log(result, loading)
+  // const [result, loading] = useHttpHook({
+  //   url: '/getListsAsync',
+  //   method: 'GET'
+  // })
+  // console.log(result, loading)
   const handleClick = () => {
-    setState('customize cahnge')
+   
+    setState('customize cahnge123')
   }
 
   return (
