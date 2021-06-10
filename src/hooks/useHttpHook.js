@@ -56,10 +56,7 @@ export default function useHttpHook({
   }
   useEffect(() => {
     Http();
-  })
-  useEffect(() => {
-    // Http();
-  }, [watch])
-  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   return [result, loading]
 }

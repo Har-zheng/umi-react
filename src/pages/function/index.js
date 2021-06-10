@@ -9,7 +9,7 @@ export default function (props) {
   useEffect(() => {
 
   }, [])
-
+console.log('123')
 
   return (
     <div>
@@ -30,6 +30,11 @@ export default function (props) {
           <List.Item>
             <Link to="/function/customize">
               customize
+            </Link>
+          </List.Item>
+          <List.Item>
+            <Link to="/function/store">
+              store
             </Link>
           </List.Item>
         </List>

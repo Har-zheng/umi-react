@@ -6,15 +6,11 @@ import User from './user.js'
 
 
 export default function (props) {
-  // const [state, setstate] = useState()
-  // useEffect(() => {
-  // }, [])
   console.log(store)
 
   return (
     <StoreProvider store={store} middleware={[log]}>
       <User />
     </StoreProvider>
-
   )
 }
