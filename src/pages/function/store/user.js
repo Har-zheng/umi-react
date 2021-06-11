@@ -14,6 +14,7 @@ export default function (props) {
       id: 10,
       username: 'admin'
     })
+    
   }, [getUserAsync])
   const handleClick = () => {
     getUserAsync({
