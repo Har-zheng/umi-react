@@ -9,7 +9,7 @@ export default function(props){
 
   return (
     <div>
-      Home
+      Home123
     </div>
   )
 }
