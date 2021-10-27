@@ -1,6 +1,5 @@
 // ref: https://umijs.org/config/
 export default {
-  treeShaking: true,
   routes: [
     {
       path: '/',
@@ -21,24 +20,13 @@ export default {
           component: './user/index',
           title: '我的'
         },
+        {
+          path: '/search',
+          component: './search/index',
+          title: '搜索'
+        },
         
       ],
     },
-  ],
-  plugins: [
-    // ref: https://umijs.org/plugin/umi-plugin-react.html
-    [
-      'umi-plugin-react',
-      {
-        antd: true,
-        dva: true,
-        dynamicImport: true,
-        title: 'react',
-        dll: false,
-        routes: {
-          exclude: [/components\//],
-        },
-      },
-    ],
-  ],
+  ]
 };

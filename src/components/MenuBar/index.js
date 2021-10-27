@@ -6,7 +6,7 @@ import { BsHouseDoorFill, BsHouseDoor, BsBagFill, BsBag, BsPersonFill, BsPerson 
 import { history } from 'umi'
 
 import './index.less'
-export class Menubar extends Component {
+export  default  class Menubar extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -43,6 +43,7 @@ export class Menubar extends Component {
               title={item.title}
               icon={item.icon}
               selectedIcon={item.selectedIcon}
+              selected={pathname===item.link}
               onPress={()=> history.push(item.link)}
             />
           ))}
