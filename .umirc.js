@@ -25,6 +25,11 @@ export default {
           component: './search/index',
           title: '搜索'
         },
+        {
+          path: '/observer',
+          component: './observer',
+          title: '搜索'
+        },
         
       ],
     },
