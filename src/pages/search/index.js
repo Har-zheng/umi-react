@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { SearchBar, ActivityIndicator } from 'antd-mobile'
 import './index.less'
-import { useHttpHook, useObserverHook } from '@/hooks'
+import { useHttpHook, useObserverHook, useImgHook} from '@/hooks'
 import { useLocation   } from 'umi'
 export default function (props) {
   const { query } = useLocation();
@@ -56,7 +56,9 @@ export default function (props) {
       })
       console.log(page);
     }
-
+  }, null)
+  useImgHook('.item-img', (entries)=> {
+    console.log(entries);
   }, null)
   useEffect(() => {
     if (!housesLoading && houses) {
@@ -85,7 +87,7 @@ export default function (props) {
           <div className='result' >
             {housesLIst.map((item, index) => (
               <div className='item' key={index}>
-                <img alt='img' src={item.img}></img>
+                <img alt='img' className='item-img' src={require('../../assets/blank.png')} data-src={ item.img } ></img>
                 <div className='item-rught'>
                   <div className='title'>{item.title}</div>
                   <div className='price'>{item.price}</div>
