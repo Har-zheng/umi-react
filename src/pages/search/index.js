@@ -3,6 +3,8 @@ import { SearchBar, ActivityIndicator } from 'antd-mobile'
 import './index.less'
 import { useHttpHook, useObserverHook, useImgHook} from '@/hooks'
 import { useLocation   } from 'umi'
+import { ShowLoading } from '@/components'
+import { CommonEnum } from '@/enums'
 export default function (props) {
   const { query } = useLocation();
   console.log(query);
@@ -10,17 +12,13 @@ export default function (props) {
   const handleCancel = () => {
     _handleSumit('')
   }
-  const [page, setPage] = useState({ pageSize: 8, pageNum: 1 })
+  const [page, setPage] = useState(CommonEnum.PAGE)
   const handleChange = (value) => {
     setHouseName(value)
   }
   const _handleSumit = (value)=> {
     setHouseName(value)
-    setPage({
-      pageNum:1,
-      pageSize: 8,
-      houseName: value
-    })
+    setPage(CommonEnum.PAGE)
     setHousesLIst([])
   } 
   const handleSumit = (value) => {
@@ -47,7 +45,7 @@ export default function (props) {
    4 监听loading变化,拼装数据
   */
 
-  useObserverHook('#loading', (entries) => {
+  useObserverHook( '#'+ CommonEnum.LOADING_ID, (entries) => {
     console.log(entries);
     if (!housesLoading && entries[0].isIntersecting && showLoading) {
       setPage({
@@ -96,8 +94,8 @@ export default function (props) {
             ))}
           </div>
         }
-        {showLoading ? <div id='loading'>Loading...</div> : <div id='loading' >我是有底线的....</div>}
-      </div>
+        <ShowLoading showLoading={showLoading}></ShowLoading>
+        </div>
     </div>
   )
 }
