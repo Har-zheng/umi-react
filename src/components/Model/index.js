@@ -21,7 +21,7 @@ const Styles = {
     justifyContent: 'center',
   },
   close: {
-    position: 'fixed',
+    position: 'absolute',
     top: '10px',
     right: '10px'
   }
@@ -31,8 +31,13 @@ export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      showModal: false
     };
+  }
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      showModal:nextProps.show
+    })
   }
   handleClose = () => {
     console.log(this.props)
@@ -40,14 +45,22 @@ export default class Index extends Component {
     onClose && onClose()
   }
   render() {
-    const { show } = this.props
-    console.log(show)
+    const { show, styleBody, styleClose } = this.props
+    const _styleBody = {
+      ...Styles.body,
+      ...styleBody
+    }
+    const _styleClose = {
+      ...Styles.close,
+      ...styleClose
+    }
+    const { showModal } = this.state;
     return (
       <div>
-        {show ? < CreatePortal style={Styles.modal}>
-          <div style={Styles.body}>
+        {showModal ? < CreatePortal style={Styles.modal}>
+          <div style={_styleBody}>
             {this.props.children}
-            <Icon type="cross" size="lg" style={Styles.close} onClick={this.handleClose}></Icon>
+            <Icon type="cross" size="lg" style={_styleClose} onClick={this.handleClose}></Icon>
           </div>
         </CreatePortal> : null}
       </div>

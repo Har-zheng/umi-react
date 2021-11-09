@@ -30,7 +30,11 @@ export default {
           component: './observer',
           title: '搜索'
         },
-        
+        {
+          path: '/house',
+          component: './house',
+          title: '房屋详情'
+        },
       ],
     },
   ]
