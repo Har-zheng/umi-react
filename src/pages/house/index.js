@@ -4,12 +4,15 @@ import Info from './components/Info'
 import Lists from './components/Lists'
 import Footer from './components/Footer'
 import './index.less'
+import {  useStoreHook } from 'think-react-store'
 
 export default function(props){
-  const [state, setState] = useState()
+ const { house: { detail, getDetailAsync } } = useStoreHook()
 
   useEffect(() => {
+    getDetailAsync({
 
+    })
   }, [])
 
   return (

@@ -90,12 +90,24 @@ export default {
           price: '220',
         },
       ]
-    }else{
+    } else {
       data = []
     }
     res.json({
       status: 200,
       data
+    })
+  },
+  'post /api/house/detail': (req, res) => {
+    res.json({
+      status: 200,
+      data: [{
+        id: 1,
+        img: 'https://youimg1.c-ctrip.com/target/100q11000000qsj8y3D34_D_450_600_R5_Q80.jpg',
+        title: '东城民宿',
+        info: '东城区交通方便',
+        price: '100',
+      }]
     })
   }
 }
