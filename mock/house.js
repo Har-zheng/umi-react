@@ -101,13 +101,22 @@ export default {
   'post /api/house/detail': (req, res) => {
     res.json({
       status: 200,
-      data: [{
-        id: 1,
-        img: 'https://youimg1.c-ctrip.com/target/100q11000000qsj8y3D34_D_450_600_R5_Q80.jpg',
-        title: '东城民宿',
-        info: '东城区交通方便',
-        price: '100',
-      }]
-    })
+      data: {
+        id: 8,
+        banner: [
+          'https://youimg1.c-ctrip.com/target/100t12000000rryww0F62_R_280_372_Q90.jpg',
+          'https://youimg1.c-ctrip.com/target/0103l1200081so14iAEBF_R_280_372_Q90.jpg',
+          'https://youimg1.c-ctrip.com/target/100q11000000qsj8y3D34_D_450_600_R5_Q80.jpg',
+        ],
+        info: {
+          title: '老城民宿',
+          msg: '老城区风景秀美',
+          price: '220',
+          publishTime: 1595238771000,
+          startTime: 1595238771000,
+          endTime: 1597917171000,
+        }
+      }
+    });
   }
 }

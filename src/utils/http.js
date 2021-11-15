@@ -28,11 +28,10 @@ export default async function Http({
 
   return new Promise((resolve, reject) => {
     fetch('/api' + url, params)
-      .then(res => { 
-        console.log(res);
-        return res.json()})
       .then(res => {
-        console.log(res);
+        return res.json()
+      })
+      .then(res => {
         if (res.status === 200) {
           resolve(res.data)
           setResult && setResult(res.data)
@@ -44,9 +43,9 @@ export default async function Http({
       .catch(err => {
         console.log(err);
         Toast.fail(err)
-        
+
         reject(err)
-        
+
       })
       .finally(() => {
         setLoading && setLoading(false)

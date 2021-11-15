@@ -2,19 +2,19 @@ import { Http } from '@/utils'
 export default {
   state: {
     detail: {},
-    comments:[]
+    comments: ['123', '321']
   },
   reducers: {
-    getDetail(state, payload){
+    getDetail(state, payload) {
+
       return {
         ...state,
-        datail: payload
+        detail: payload
       }
     }
   },
   effects: {
-    async getDetailAsync(dispatch, rootState, payload){
-    
+    async getDetailAsync(dispatch, rootState, payload) {
       const detail = await Http({
         url: '/house/detail',
         body: payload
