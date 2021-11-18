@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Model } from '@/components'
-import { TextareaItem ,Button} from 'antd-mobile'
+import { TextareaItem, Button, Toast } from 'antd-mobile'
+import { useStoreHook } from 'think-react-store'
 export default function (props) {
   const [show, setShow] = useState(false)
-
+  const [commentsValue, setCommentsValue] = useState(false)
+  const { house: { addCommentsAsync, reloadCommentsNum } } = useStoreHook()
   const handleClick = () => {
     console.log('handleClick');
     setShow(true)
   }
-  const handleChange = (value)=> {
+  const handleChange = (value) => {
     console.log(value);
+    setCommentsValue(value)
   }
-  const handleSubmit =()=> {
-
+  const handleSubmit = () => {
+    if (commentsValue) {
+      addCommentsAsync({
+        comment: commentsValue
+      })
+      console.log(reloadCommentsNum);
+    } else {
+      Toast.fail('请添加信息')
+    }
   }
-  const handleClose=()=> {
+  const handleClose = () => {
     setShow(false)
   }
 

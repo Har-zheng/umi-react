@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-
-
-export default function(props) {
+import { Timer } from '@/utils'
+import { ShowLoading } from '@/components'
+export default function (props) {
   const [state, setState] = useState();
-
+  console.log(props);
   useEffect(() => {
 
   }, []);
@@ -12,18 +12,21 @@ export default function(props) {
     <div className='comment'>
       <h1 className='comment-title'>评论</h1>
       <div className="comment-lists">
-          <div className="comment-lists_item" >
-            <img src={'https://youimg1.c-ctrip.com/target/100q11000000qsj8y3D34_D_450_600_R5_Q80.jpg'} alt="" className="avatar" />
+        {props?.lists?.map(item => (
+          <div className="comment-lists_item" key={item?.id}>
+            <img src={item?.avatar} alt="" className="avatar" />
             <div className="right">
               <div className="right-top">
-                <p>{'zhz'}</p>
-                <p>{'2021-11-09'}</p>
+                <p>{item?.username}</p>
+                <p>{Timer(item?.createTime)}</p>
               </div>
               <div className="right-bottom">
-                {'民宿推荐'}
+                {item?.info}
               </div>
             </div>
           </div>
+        ))}
+        <ShowLoading showLoading={props?.showLoading}></ShowLoading>
       </div>
     </div>
   );
