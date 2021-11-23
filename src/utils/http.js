@@ -39,13 +39,12 @@ export default async function Http({
           Toast.fail(res.errMsg)
           reject(res.errMsg)
         }
+
       })
       .catch(err => {
         console.log(err);
         Toast.fail(err)
-
         reject(err)
-
       })
       .finally(() => {
         setLoading && setLoading(false)
