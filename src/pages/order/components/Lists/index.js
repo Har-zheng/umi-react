@@ -19,12 +19,11 @@ export default function (props) {
           <ActivityIndicator toast /> :
           <div className='tab-lists'>
             {props.orders.map(item => (
-
               <OrderItem type={props.type} key={item.id} {...item}></OrderItem>
             ))}
-            <ShowLoading showLoading={props.showLoading} />
           </div>
       }
+      <ShowLoading showLoading={props.showLoading} />
     </div>
   )
 }

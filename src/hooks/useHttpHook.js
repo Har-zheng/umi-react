@@ -11,8 +11,6 @@ export default function useHttpHook({
 }) {
   const [result, setResult] = useState()
   const [loading, setLoading] = useState(true)
-
-
   useEffect(() => {
     Http({
       url,
@@ -22,7 +20,7 @@ export default function useHttpHook({
       setResult,
       setLoading
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },watch)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, watch)
   return [result, loading]
 }
