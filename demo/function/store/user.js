@@ -8,7 +8,6 @@ export default function (props) {
   const states = useStateHook('user') // state 中的值
   const dispatchs = useDispatchHook('user');
   console.log(dispatchs)
-  let arr = [getUserAsync]
   useEffect(() => {
     getUserAsync({
       id: 10,

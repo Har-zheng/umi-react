@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { List } from 'antd-mobile'
 import { history } from 'umi'
 import './index.less'
-import { useStateHook } from 'think-react-store'
+import { useStateHook, useStoreHook } from 'think-react-store'
 
 export default function (props) {
   const [state, setState] = useState()
-  console.log(useStateHook());
-  const { user: { username, avatar, tel, sign, getUserAsync }, house: { getDetailAsync } } = useStateHook()
+
+  const { user: { username, avatar, tel, sign, getUserAsync } } = useStoreHook()
+
   const handleClick = () => {
     console.log('handleClick');
     history.push({
@@ -19,8 +20,7 @@ export default function (props) {
   }
 
   useEffect(() => {
-    getDetailAsync({})
-    getUserAsync && getUserAsync({
+  getUserAsync({
       id: 10
     })
   }, [])
