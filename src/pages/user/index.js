@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { List } from 'antd-mobile'
-import { history } from 'umi'
-import './index.less'
-import { useStateHook, useStoreHook } from 'think-react-store'
+import { List, Button } from 'antd-mobile';
+import { history } from 'umi';
+import { useStoreHook } from 'think-react-store';
+
+import './index.less';
 
 export default function (props) {
+  const { user: { username, avatar, phone, sign, getUserAsync, logoutAsync } } = useStoreHook();
   const [state, setState] = useState()
 
-  const { user: { username, avatar, tel, sign, getUserAsync } } = useStoreHook()
-
   const handleClick = () => {
-    console.log('handleClick');
     history.push({
       pathname: '/user/edit',
       query: {
         id: 10
       }
-    })
-  }
+    });
+  };
+
+  const handleLogout = () => {
+    logoutAsync();
+  };
 
   useEffect(() => {
-  getUserAsync({
+    getUserAsync({
       id: 10
-    })
+    });
   }, [])
 
   return (
@@ -31,8 +34,8 @@ export default function (props) {
       <div className='info'>
         <div className='set' onClick={handleClick}>设置</div>
         <div className='user'>
-          <img alt='user' src={avatar} />
-          <div className='tel'>{tel}</div>
+          <img alt='user' src={avatar || require('../../assets/yay.jpg')} />
+          <div className='tel'>{phone}</div>
           <div className='sign'>{sign}</div>
         </div>
       </div>
@@ -50,6 +53,7 @@ export default function (props) {
           </List.Item>
         </List>
       </div>
+      <Button style={{ marginTop: '100px' }} onClick={handleLogout}>退出登录</Button>
     </div>
   )
 }

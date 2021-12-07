@@ -1,5 +1,17 @@
 // ref: https://umijs.org/config/
-export default {
+import { defineConfig } from 'umi'
+export default defineConfig({
+  nodeModulesTransform: {
+    type: 'none'
+  },
+  mock: false,
+  proxy: {
+    '/api': {
+      'target': 'http://127.0.0.1:7001/',
+      'changeOrigin': true
+    }
+  },
+
   routes: [
     {
       path: '/',
@@ -53,4 +65,4 @@ export default {
       ],
     },
   ]
-};
+});

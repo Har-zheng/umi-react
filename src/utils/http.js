@@ -1,25 +1,32 @@
-import { Toast } from 'antd-mobile'
-export default async function Http({
+import { Toast } from 'antd-mobile';
+
+export default function Http({
   url,
   method = 'post',
-  headers,
+  headers = {},
   body = {},
   setLoading,
-  setResult
+  setResult,
 }) {
-  setLoading && setLoading(true)
-  const defaultHeader = {
-    'Content-type': 'application/json'
-  }
+  setLoading && setLoading(true);
 
-  let params
+  const token = localStorage.getItem('token');
+  let defaultHeader = {
+    'Content-type': 'application/json'
+  };
+  defaultHeader = token ? {
+    ...defaultHeader,
+    token
+  } : defaultHeader;
+
+  let params;
   if (method.toUpperCase() === 'GET') {
-    params = undefined
+    params = undefined;
   } else {
     params = {
       headers: {
         ...defaultHeader,
-        headers
+        ...headers
       },
       method,
       body: JSON.stringify(body)
@@ -29,25 +36,31 @@ export default async function Http({
   return new Promise((resolve, reject) => {
     fetch('/api' + url, params)
       .then(res => {
-        return res.json()
+        const resJson = res.json()
+        console.log(resJson);
+
+        return resJson
       })
       .then(res => {
-        if (res.status === 200) {
-          resolve(res.data)
-          setResult && setResult(res.data)
-        } else {
-          Toast.fail(res.errMsg)
-          reject(res.errMsg)
-        }
 
+        if (res.status === 200) {
+          resolve(res.data);
+          setResult && setResult(res.data);
+        } else {
+          if (res.status === 1001) {
+            window.location.href = '/login?from=' + window.location.pathname;
+            localStorage.clear();
+          }
+          Toast.fail(res.errMsg);
+          reject(res.errMsg);
+        }
       })
       .catch(err => {
-        console.log(err);
-        Toast.fail(err)
-        reject(err)
+        Toast.fail(err);
+        reject(err);
       })
       .finally(() => {
-        setLoading && setLoading(false)
+        setLoading && setLoading(false);
       })
-  })
+  });
 }
